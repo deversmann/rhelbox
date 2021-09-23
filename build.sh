@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RHEL_ISO="/Users/deversma/Downloads/isos/rhel-8.3-x86_64-dvd.iso"
+RHEL_ISO="/Users/deversma/Downloads/rhel-8.4-x86_64-dvd.iso"
 VM="rhelbox-$(date +%s)"
 BUILD_DIR="build"
 RELEASE_DIR="release"
@@ -51,4 +51,4 @@ VBoxManage closemedium disk $BUILD_DIR/$VM/oemdrv.vdi --delete
 # package VM as vagrant box
 [[ ! -d $RELEASE_DIR ]] && mkdir -p $RELEASE_DIR
 vagrant package --base $VM --output $RELEASE_DIR/$VM.box
-echo "SHA1: $( sha1sum $RELEASE_DIR/$VM.box )"
+echo "SHA1: $( shasum $RELEASE_DIR/$VM.box )"
